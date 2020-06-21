@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { Box } from '@xstyled/styled-components'
+import styled from '@xstyled/styled-components';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -7,6 +7,7 @@ const Wrapper = styled.div`
 `;
 
 const Label = styled.label`
+  display: block;
   font-size: 24px;
   font-weight: 600;
 `;
@@ -21,12 +22,12 @@ const Input = styled.input`
 const OzText = styled.span`
   text-align: left;
   font-size: 1em;
-  padding: 0.5em;;
+  padding: 0.5em;
 `;
 
 const SubmitButton = styled.input`
   padding: 0.8em 3em;
-  background-color: ${({ theme: { colors } }) => colors.waterBlue};
+  background-color: #21addb;
   color: #fff;
   font-size: 1em;
   font-weight: 600;
@@ -34,44 +35,51 @@ const SubmitButton = styled.input`
   border-radius: 0.25em;
 `;
 
+const Cont = styled.div`
+  display: block;
+  margin: 1em;
+`;
+
 export interface WaterAmountProps {
-  enteredAmount: string;
+  enteredAmount: number;
 }
 
-const WaterAmount: React.FC<WaterAmountProps> = ({
-}: WaterAmountProps): JSX.Element => {
-  const [enteredAmount, setEnteredAmount] = React.useState("");
+const WaterAmount: React.FC<WaterAmountProps> = (
+  WaterAmountProps
+): JSX.Element => {
+  const [enteredAmount, setEnteredAmount] = React.useState(0);
   const onSubmitAmountClick = (e) => {
     e.preventDefault();
-    const inputValue = (document.getElementById("amountValue") as HTMLInputElement).value;
-    setEnteredAmount(inputValue);
+    const inputValue = (document.getElementById(
+      'amountValue'
+    ) as HTMLInputElement).value;
+    const parsedValue = parseInt(inputValue, 10);
+    setEnteredAmount(parsedValue);
     console.log('clicked!', inputValue);
-  }
-  console.log("value", enteredAmount);
- 
+  };
+  console.log('value', enteredAmount);
+
   return (
     <Wrapper>
       <form>
-        <Box row id="water">
-          <Box col p={16}>
-           <Label id="amount">Insert your amount you had </Label>
-          </Box> 
-        </Box>
-        <Box row>
-          <Box col={2 / 3} p={16}>
-            <Input type="text" name="amount" id="amountValue" />  
-            <OzText>oz</OzText>
-          </Box>
-          <Box col={1 / 3} p={16}>
-            <SubmitButton type="submit" value="Submit" onClick={onSubmitAmountClick} />
-          </Box>  
-        </Box>
-        <Box row>
-          You entered {enteredAmount} oz.
-        </Box>
+        <Cont>
+          <Label id="amount">Insert your amount you had </Label>
+        </Cont>
+        <Cont>
+          <Input type="text" name="amount" id="amountValue" />
+          <OzText>oz</OzText>
+        </Cont>
+        <Cont>
+          <SubmitButton
+            type="submit"
+            value="Submit"
+            onClick={onSubmitAmountClick}
+          />
+        </Cont>
+        <Cont>You entered {enteredAmount} oz.</Cont>
       </form>
     </Wrapper>
   );
-}
+};
 
 export default WaterAmount;
