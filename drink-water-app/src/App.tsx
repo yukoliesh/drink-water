@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import styled from '@xstyled/styled-components';
-import {th} from '@xstyled/system'
+import { th } from '@xstyled/system'
 import TotalAmount from './components/TotalAmount'
 import WaterAmount from './components/WaterAmount';
 
@@ -21,8 +21,22 @@ const HeaderCont = styled.div `
 `;
 
 const Heading = styled.h1 `
-  font-size: 2em;
+  font-size: ${th.fontSize(68)};
   color: #6eb5e8;
+`;
+const SubHeading = styled.h2`
+  font-size: ${th.fontSize(40)};
+  margin: 0;
+`;
+
+const WaterWrapper = styled.div`
+  align-items: center;
+  padding: 1em;
+  margin: 2em auto;
+  border-radius: 0.5em;
+  border: solid 1px #a7cdeb;
+  width: 40%;
+
 `;
 
 const App = () => {
@@ -30,13 +44,15 @@ const App = () => {
     <React.Fragment>
       <HeaderWrapper>
         <HeaderCont>
-        <Heading isHeading = {true}> Drink Your Water </Heading>  
-        <h2> Stay hydrated.Drink 8 8 - ounces glasses a day. </h2>  
+        <Heading> Drink Your Water </Heading>  
+        <SubHeading> Stay hydrated. Drink 8 8-ounce glasses a day. </SubHeading>  
         <p> Click on a drop when you drink water. </p>  
         </HeaderCont>  
       </HeaderWrapper>  
-      <TotalAmount />
-      <WaterAmount />
+      <WaterWrapper>
+        <TotalAmount enteredAmount={8} />
+        <WaterAmount enteredAmount={8} />
+      </WaterWrapper>
     </React.Fragment>
   );
 }

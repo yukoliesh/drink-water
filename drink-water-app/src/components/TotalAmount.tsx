@@ -3,12 +3,13 @@ import { th } from '@xstyled/system';
 import styled from '@xstyled/styled-components';
 
 const TotalAmountWrapper = styled.div`
-  width: 100%;
   text-align: center;
   padding: ${th.space(5)};
+  background-color: #d6edff;
 `;
 const AmountText = styled.span`
   font-size: ${th.fontSize(72)};
+  font-weight: 600;
 `;
 const OzText = styled.span`
   text-align: left;
@@ -20,12 +21,12 @@ export interface TotalAmountProps {
   enteredAmount: number;
 }
 
-const TotalAmount: React.FC<TotalAmountProps> = (
-  TotalAmountProps
-): JSX.Element => {
+const TotalAmount: React.FC<TotalAmountProps> = ({
+  enteredAmount
+}: TotalAmountProps): JSX.Element => {
   return (
     <TotalAmountWrapper>
-      <AmountText>8</AmountText>
+      <AmountText>{enteredAmount}</AmountText>
       <OzText>oz</OzText>
     </TotalAmountWrapper>
   );
