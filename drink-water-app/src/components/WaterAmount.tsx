@@ -43,22 +43,14 @@ const Cont = styled.div`
 
 export interface WaterAmountProps {
   enteredAmount: number;
+  onSubmitAmountClick: (e) => void;
 }
 
-const WaterAmount: React.FC<WaterAmountProps> = (
-  WaterAmountProps
-): JSX.Element => {
-  const [enteredAmount, setEnteredAmount] = React.useState(0);
-  const onSubmitAmountClick = (e) => {
-    e.preventDefault();
-    const inputValue = (document.getElementById(
-      'amountValue'
-    ) as HTMLInputElement).value;
-    const parsedValue = parseInt(inputValue, 10);
-    setEnteredAmount(parsedValue);
-    console.log('clicked!', inputValue);
-  };
-  console.log('value', enteredAmount);
+const WaterAmount: React.FC<WaterAmountProps> = ({
+  enteredAmount,
+  onSubmitAmountClick
+}: WaterAmountProps): JSX.Element => {
+  
 
   return (
     <Wrapper>

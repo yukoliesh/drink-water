@@ -24,6 +24,7 @@ export interface TotalAmountProps {
 const TotalAmount: React.FC<TotalAmountProps> = ({
   enteredAmount
 }: TotalAmountProps): JSX.Element => {
+  
   return (
     <TotalAmountWrapper>
       <AmountText>{enteredAmount}</AmountText>

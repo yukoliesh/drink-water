@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import styled from '@xstyled/styled-components';
 import { th } from '@xstyled/system'
 import TotalAmount from './components/TotalAmount'
@@ -39,7 +38,20 @@ const WaterWrapper = styled.div`
 
 `;
 
-const App = () => {
+export const App: React.FC<AppProps> = ({
+}): JSX.Element => {
+  
+  const [enteredAmount, setEnteredAmount] = React.useState(0);
+  const onSubmitAmountClick = (e) => {
+    e.preventDefault();
+    const inputValue = (document.getElementById(
+      'amountValue'
+    ) as HTMLInputElement).value;
+    const parsedValue = parseInt(inputValue, 10);
+    setEnteredAmount(parsedValue);
+    console.log('clicked!', inputValue);
+  };
+  console.log('value', enteredAmount);
   return ( 
     <React.Fragment>
       <HeaderWrapper>
@@ -50,8 +62,8 @@ const App = () => {
         </HeaderCont>  
       </HeaderWrapper>  
       <WaterWrapper>
-        <TotalAmount enteredAmount={8} />
-        <WaterAmount enteredAmount={8} />
+        <TotalAmount enteredAmount={enteredAmount} />
+        <WaterAmount enteredAmount={enteredAmount} onSubmitAmountClick={onSubmitAmountClick} />
       </WaterWrapper>
     </React.Fragment>
   );
