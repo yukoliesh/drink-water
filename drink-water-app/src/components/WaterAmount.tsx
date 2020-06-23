@@ -42,31 +42,37 @@ const Cont = styled.div`
 `;
 
 export interface WaterAmountProps {
-  enteredAmount: number;
-  onSubmitAmountClick: (e) => void;
+  setTotalAmount: (e) => void;
 }
 
 const WaterAmount: React.FC<WaterAmountProps> = ({
-  enteredAmount,
-  onSubmitAmountClick
+  setTotalAmount
 }: WaterAmountProps): JSX.Element => {
-  
-
+  const [enteredAmount, setEnteredAmount] = React.useState(0);
+  const handleChange = (e) => {
+    const value = parseInt(e.target.value);
+    setEnteredAmount(value ? value : e.target.value);
+    console.log(typeof enteredAmount);
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTotalAmount((totalAmount: number) => totalAmount + enteredAmount);
+  }
   return (
     <Wrapper>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Cont>
-          <Label id="amount">Insert your amount you had </Label>
+          <Label id="amount">Insert your amount you had today.</Label>
         </Cont>
         <Cont>
-          <Input type="text" name="amount" id="amountValue" />
+          <Input type="text" name="amount" id="amountValue" value={enteredAmount} onChange={handleChange} />
           <OzText>oz</OzText>
         </Cont>
         <Cont>
           <SubmitButton
             type="submit"
             value="Submit"
-            onClick={onSubmitAmountClick}
+            
           />
         </Cont>
         <Cont>You entered {enteredAmount} oz.</Cont>

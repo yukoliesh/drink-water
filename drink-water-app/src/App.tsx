@@ -38,32 +38,26 @@ const WaterWrapper = styled.div`
 
 `;
 
-export const App: React.FC<AppProps> = ({
-}): JSX.Element => {
+interface AppProps {
+
+}
+
+export const App: React.FC<AppProps> = (props): JSX.Element => {
+  const [totalAmount, setTotalAmount] = React.useState(0);
   
-  const [enteredAmount, setEnteredAmount] = React.useState(0);
-  const onSubmitAmountClick = (e) => {
-    e.preventDefault();
-    const inputValue = (document.getElementById(
-      'amountValue'
-    ) as HTMLInputElement).value;
-    const parsedValue = parseInt(inputValue, 10);
-    setEnteredAmount(parsedValue);
-    console.log('clicked!', inputValue);
-  };
-  console.log('value', enteredAmount);
+
   return ( 
     <React.Fragment>
       <HeaderWrapper>
         <HeaderCont>
         <Heading> Drink Your Water </Heading>  
         <SubHeading> Stay hydrated. Drink 8 8-ounce glasses a day. </SubHeading>  
-        <p> Click on a drop when you drink water. </p>  
+        <p> Enter your amount when you drink water. </p>  
         </HeaderCont>  
       </HeaderWrapper>  
       <WaterWrapper>
-        <TotalAmount enteredAmount={enteredAmount} />
-        <WaterAmount enteredAmount={enteredAmount} onSubmitAmountClick={onSubmitAmountClick} />
+        <TotalAmount totalAmount={totalAmount} />
+        <WaterAmount setTotalAmount={setTotalAmount} />
       </WaterWrapper>
     </React.Fragment>
   );

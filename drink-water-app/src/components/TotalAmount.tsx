@@ -18,16 +18,16 @@ const OzText = styled.span`
 `;
 
 export interface TotalAmountProps {
-  enteredAmount: number;
+  totalAmount: number;
 }
 
 const TotalAmount: React.FC<TotalAmountProps> = ({
-  enteredAmount
+  totalAmount
 }: TotalAmountProps): JSX.Element => {
   
   return (
     <TotalAmountWrapper>
-      <AmountText>{enteredAmount}</AmountText>
+      <AmountText>{totalAmount}</AmountText>
       <OzText>oz</OzText>
     </TotalAmountWrapper>
   );
