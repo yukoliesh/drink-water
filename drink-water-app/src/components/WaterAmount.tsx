@@ -7,6 +7,10 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
+const FormCont = styled.form`
+  margin-top: 3em;
+`;
+
 const Label = styled.label`
   display: block;
   font-size: 24px;
@@ -14,7 +18,7 @@ const Label = styled.label`
 `;
 
 const Input = styled.input`
-  width: 50%;
+  width: 40%;
   padding: 1em 1.5em;
   margin: 0.25em 0;
   box-sizing: border-box;
@@ -51,8 +55,7 @@ const WaterAmount: React.FC<WaterAmountProps> = ({
   const [enteredAmount, setEnteredAmount] = React.useState(0);
   const handleChange = (e) => {
     const value = parseInt(e.target.value);
-    setEnteredAmount(value ? value : e.target.value);
-    console.log(typeof enteredAmount);
+    return setEnteredAmount(value ? value : e.target.value);
   }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,23 +63,22 @@ const WaterAmount: React.FC<WaterAmountProps> = ({
   }
   return (
     <Wrapper>
-      <form onSubmit={handleSubmit}>
+      <FormCont onSubmit={handleSubmit}>
         <Cont>
           <Label id="amount">Insert your amount you had today.</Label>
         </Cont>
         <Cont>
-          <Input type="text" name="amount" id="amountValue" value={enteredAmount} onChange={handleChange} />
+          <Input type="number" name="amount" id="amountValue" value={enteredAmount} onChange={handleChange} />
           <OzText>oz</OzText>
         </Cont>
         <Cont>
           <SubmitButton
             type="submit"
             value="Submit"
-            
           />
         </Cont>
         <Cont>You entered {enteredAmount} oz.</Cont>
-      </form>
+      </FormCont>
     </Wrapper>
   );
 };

@@ -3,6 +3,7 @@ import styled from '@xstyled/styled-components';
 import { th } from '@xstyled/system'
 import TotalAmount from './components/TotalAmount'
 import WaterAmount from './components/WaterAmount';
+import ProgressBar from './components/ProgressBar/ProgressBar';
 
 const HeaderWrapper = styled.div `
   text-align:center;
@@ -44,7 +45,12 @@ interface AppProps {
 
 export const App: React.FC<AppProps> = (props): JSX.Element => {
   const [totalAmount, setTotalAmount] = React.useState(0);
-  
+  // const [percentage , setPercentage] = React.useState(0);
+
+  // const handlePercentage = () => {
+
+  // }
+  console.log("total", totalAmount);
 
   return ( 
     <React.Fragment>
@@ -57,6 +63,7 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
       </HeaderWrapper>  
       <WaterWrapper>
         <TotalAmount totalAmount={totalAmount} />
+        <ProgressBar percentage={20} />
         <WaterAmount setTotalAmount={setTotalAmount} />
       </WaterWrapper>
     </React.Fragment>
