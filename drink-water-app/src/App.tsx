@@ -45,12 +45,13 @@ interface AppProps {
 
 export const App: React.FC<AppProps> = (props): JSX.Element => {
   const [totalAmount, setTotalAmount] = React.useState(0);
-  // const [percentage , setPercentage] = React.useState(0);
-
-  // const handlePercentage = () => {
-
-  // }
-  console.log("total", totalAmount);
+  
+  const handlePercentage = () => {
+    const value = (totalAmount / 64 * 100).toFixed(2);
+    const fixedValue = parseInt(value, 10);
+    console.log(fixedValue);
+    return fixedValue;
+  }
 
   return ( 
     <React.Fragment>
@@ -63,7 +64,7 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
       </HeaderWrapper>  
       <WaterWrapper>
         <TotalAmount totalAmount={totalAmount} />
-        <ProgressBar percentage={20} />
+        <ProgressBar percentage={handlePercentage()} />
         <WaterAmount setTotalAmount={setTotalAmount} />
       </WaterWrapper>
     </React.Fragment>
