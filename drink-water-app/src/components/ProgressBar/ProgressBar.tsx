@@ -51,7 +51,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       </ProgressBarCont>
       <GoalWrapper>
         <Triangle />
-        <GoalCont>64oz!</GoalCont>
+        <GoalCont>Goal!</GoalCont>
       </GoalWrapper>
     </React.Fragment>
   )

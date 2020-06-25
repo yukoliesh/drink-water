@@ -4,6 +4,7 @@ import { th } from '@xstyled/system'
 import TotalAmount from './components/TotalAmount'
 import WaterAmount from './components/WaterAmount';
 import ProgressBar from './components/ProgressBar/ProgressBar';
+import AlertBox from './components/AlertBox/AlertBox';
 
 const HeaderWrapper = styled.div `
   text-align:center;
@@ -49,7 +50,6 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
   const handlePercentage = () => {
     const value = (totalAmount / 64 * 100).toFixed(2);
     const fixedValue = parseInt(value, 10);
-    console.log(fixedValue);
     return fixedValue;
   }
 
@@ -67,6 +67,7 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
         <ProgressBar percentage={handlePercentage()} />
         <WaterAmount setTotalAmount={setTotalAmount} />
       </WaterWrapper>
+      <AlertBox />
     </React.Fragment>
   );
 }

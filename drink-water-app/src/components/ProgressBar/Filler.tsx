@@ -6,6 +6,7 @@ const FillerItem = styled.div`
   height: 100%;
   border-radius: inherit;
   transition: width .2s ease-in;
+  max-width: 100%;
 `;
 
 const Filler = (props) => {
