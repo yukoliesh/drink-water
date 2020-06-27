@@ -65,21 +65,29 @@ const TearDropWrapper = styled.div`
   width: 3em;
   margin: auto;
 `;
+const CheckboxWrapper = styled.div`
+  align-self: center;
+  margin: 1.5em auto;
+`;
+const NoReminderCheckbox = styled.input`
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+`;
 
 export interface AlertBoxProps {
-  setModalIsDisplay: () => void;
-  modalIsDisplay: boolean;
+  onCloseClick: () => void;
+  onNoReminderClick: () => void;
+  modalIsDisplay: string;
 }
 
 const AlertBox: React.FC<AlertBoxProps> = ({
-  setModalIsDisplay,
+  onCloseClick,
+  onNoReminderClick,
   modalIsDisplay
 
 }): JSX.Element => {
-const onCloseClick = () => {
-  console.log("hello");
-  setModalIsDisplay(false);
-}
+
   return (
     <AlertWrapper style={{display: `${modalIsDisplay}`}}>
       <AlertMessageCont>
@@ -96,7 +104,11 @@ const onCloseClick = () => {
             Q 15 6 15 6z" />
           </svg>
         </TearDropWrapper>
-        <ReminderText>Drink your water!</ReminderText>
+        <ReminderText>Drink your water! Nourish your body! :) </ReminderText>
+        <CheckboxWrapper>
+         <NoReminderCheckbox type="checkbox" id="no-reminder" name="no-reminder" value="noreminder" onClick={onNoReminderClick} />
+         <label htmlFor="no-reminder">Don't reminder me!</label>
+        </CheckboxWrapper>
         <CloseButton type="button" value="Close" id="close" onClick={onCloseClick} />
       </AlertMessageCont>
     </AlertWrapper>
