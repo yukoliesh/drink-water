@@ -67,19 +67,21 @@ const TearDropWrapper = styled.div`
 `;
 
 export interface AlertBoxProps {
- 
+  setModalIsDisplay: () => void;
+  modalIsDisplay: boolean;
 }
 
 const AlertBox: React.FC<AlertBoxProps> = ({
+  setModalIsDisplay,
+  modalIsDisplay
 
-}: AlertBoxProps): JSX.Element => {
-  const [closeDisplay, setCloseDisplay] = React.useState("flex")
-
+}): JSX.Element => {
 const onCloseClick = () => {
-  setCloseDisplay("none");
+  console.log("hello");
+  setModalIsDisplay(false);
 }
   return (
-    <AlertWrapper style={{display: `${closeDisplay}`}}>
+    <AlertWrapper style={{display: `${modalIsDisplay}`}}>
       <AlertMessageCont>
         <HeaderWrapper>
           <ReminderHeader>Reminder</ReminderHeader>
@@ -87,7 +89,7 @@ const onCloseClick = () => {
         </HeaderWrapper>
         <TearDropWrapper>
           <svg width="100%" viewBox="0 0 30 42">
-            <path fill="#a2dafa" stroke="#2a9cde" stroke-width="1.5" 
+            <path fill="#a2dafa" stroke="#2a9cde" strokeWidth="1.5" 
             d="M15 6
             Q 15 6, 25 18
             A 12.8 12.8 0 1 1 5 18
