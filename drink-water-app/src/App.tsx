@@ -1,13 +1,15 @@
-import React from 'react';
-import styled from '@xstyled/styled-components';
-import { th } from '@xstyled/system'
-import TotalAmount from './components/TotalAmount'
-import WaterAmount from './components/WaterAmount';
+import React from "react";
+import styled from "@xstyled/styled-components";
+import { th } from "@xstyled/system";
+import TotalAmount from "./components/TotalAmount";
+import WaterAmount from "./components/WaterAmount";
+import ProgressBar from "./components/ProgressBar/ProgressBar";
+import AlertBox from "./components/AlertBox/AlertBox";
 
-const HeaderWrapper = styled.div `
-  text-align:center;
+const HeaderWrapper = styled.div`
+  text-align: center;
 `;
-const HeaderCont = styled.div `
+const HeaderCont = styled.div`
   background-color: #282c34;
   min-height: 40vh;
   display: flex;
@@ -15,11 +17,11 @@ const HeaderCont = styled.div `
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: #F9F7EB;
+  color: #f9f7eb;
   padding-bottom: ${th.space(5)};
 `;
 
-const Heading = styled.h1 `
+const Heading = styled.h1`
   font-size: ${th.fontSize(68)};
   color: #6eb5e8;
 `;
@@ -35,32 +37,48 @@ const WaterWrapper = styled.div`
   border-radius: 0.5em;
   border: solid 1px #a7cdeb;
   width: 40%;
-
 `;
 
-interface AppProps {
-
-}
+interface AppProps {}
 
 export const App: React.FC<AppProps> = (props): JSX.Element => {
   const [totalAmount, setTotalAmount] = React.useState(0);
-  
+  const [modalIsDisplay, setModalIsDisplay] = React.useState(false);
 
-  return ( 
+  const handlePercentage = () => {
+    const value = ((totalAmount / 64) * 100).toFixed(2);
+    const fixedValue = parseInt(value, 10);
+    return fixedValue;
+  };
+  // React.useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setModalDisplay("flex");
+  //     // <AlertBox />
+  //     // }, 60*60*1000);
+  //   }, 5000);
+  //   return () => clearInterval(interval);
+  // }, []);
+
+  return (
     <React.Fragment>
       <HeaderWrapper>
         <HeaderCont>
-        <Heading> Drink Your Water </Heading>  
-        <SubHeading> Stay hydrated. Drink 8 8-ounce glasses a day. </SubHeading>  
-        <p> Enter your amount when you drink water. </p>  
-        </HeaderCont>  
-      </HeaderWrapper>  
+          <Heading> Drink Your Water </Heading>
+          <SubHeading>
+            {" "}
+            Stay hydrated. Drink 8 8-ounce glasses a day.{" "}
+          </SubHeading>
+          <p> Enter your amount when you drink water. </p>
+        </HeaderCont>
+      </HeaderWrapper>
       <WaterWrapper>
         <TotalAmount totalAmount={totalAmount} />
+        <ProgressBar percentage={handlePercentage()} />
         <WaterAmount setTotalAmount={setTotalAmount} />
       </WaterWrapper>
+      <AlertBox setModalIsDisplay={setModalIsDisplay} modalIsDisplay={modalIsDisplay} />
     </React.Fragment>
   );
-}
+};
 
 export default App;

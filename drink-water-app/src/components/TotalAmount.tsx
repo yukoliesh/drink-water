@@ -6,6 +6,7 @@ const TotalAmountWrapper = styled.div`
   text-align: center;
   padding: ${th.space(5)};
   background-color: #d6edff;
+  border-radius: 0.25em;
 `;
 const AmountText = styled.span`
   font-size: ${th.fontSize(72)};
@@ -21,15 +22,16 @@ export interface TotalAmountProps {
   totalAmount: number;
 }
 
+
 const TotalAmount: React.FC<TotalAmountProps> = ({
   totalAmount
 }: TotalAmountProps): JSX.Element => {
-  
+ 
   return (
-    <TotalAmountWrapper>
-      <AmountText>{totalAmount}</AmountText>
-      <OzText>oz</OzText>
-    </TotalAmountWrapper>
+      <TotalAmountWrapper>
+        <AmountText>{totalAmount}</AmountText>
+        <OzText>oz</OzText>
+      </TotalAmountWrapper>
   );
 };
 
