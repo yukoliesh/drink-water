@@ -56,7 +56,7 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
       setModalIsDisplay("flex");
       // }, 60*60*1000);
       console.log("modal", modalIsDisplay);
-    }, 500000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [modalIsDisplay]);
 

@@ -66,12 +66,14 @@ const TearDropWrapper = styled.div`
   margin: auto;
 `;
 const CheckboxWrapper = styled.div`
-  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 1.5em auto;
 `;
 const NoReminderCheckbox = styled.input`
-  width: 1em;
-  height: 1em;
+  width: 1.5em;
+  height: 1.5em;
   margin-right: 0.5em;
 `;
 
