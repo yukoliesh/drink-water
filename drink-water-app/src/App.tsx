@@ -43,21 +43,31 @@ interface AppProps {}
 
 export const App: React.FC<AppProps> = (props): JSX.Element => {
   const [totalAmount, setTotalAmount] = React.useState(0);
-  const [modalIsDisplay, setModalIsDisplay] = React.useState(false);
+  const [modalIsDisplay, setModalIsDisplay] = React.useState("none");
 
   const handlePercentage = () => {
     const value = ((totalAmount / 64) * 100).toFixed(2);
     const fixedValue = parseInt(value, 10);
     return fixedValue;
   };
-  // React.useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setModalDisplay("flex");
-  //     // <AlertBox />
-  //     // }, 60*60*1000);
-  //   }, 5000);
-  //   return () => clearInterval(interval);
-  // }, []);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setModalIsDisplay("flex");
+      // }, 60*60*1000);
+      console.log("modal", modalIsDisplay);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [modalIsDisplay]);
+
+  const onCloseClick = () => {
+    setModalIsDisplay("none");
+  }
+
+  const onNoReminderClick = () => {
+    console.log("checked");
+    // clearInterval(interval);
+  }
 
   return (
     <React.Fragment>
@@ -65,8 +75,7 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
         <HeaderCont>
           <Heading> Drink Your Water </Heading>
           <SubHeading>
-            {" "}
-            Stay hydrated. Drink 8 8-ounce glasses a day.{" "}
+            Stay hydrated. Drink 8 8-ounce glasses a day.
           </SubHeading>
           <p> Enter your amount when you drink water. </p>
         </HeaderCont>
@@ -76,7 +85,7 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
         <ProgressBar percentage={handlePercentage()} />
         <WaterAmount setTotalAmount={setTotalAmount} />
       </WaterWrapper>
-      <AlertBox setModalIsDisplay={setModalIsDisplay} modalIsDisplay={modalIsDisplay} />
+      <AlertBox modalIsDisplay={modalIsDisplay} onCloseClick={onCloseClick} onNoReminderClick={onNoReminderClick} />
     </React.Fragment>
   );
 };
