@@ -19,7 +19,7 @@ const AlertMessageCont = styled.div`
   z-index: 2;
   align-self: center;
   width: 30%;
-  height: 30%;
+  height: 35%;
   background-color: #fff;
   border-radius: 0.5em;
   padding: 2em;
@@ -81,12 +81,16 @@ export interface AlertBoxProps {
   onCloseClick: () => void;
   onNoReminderClick: () => void;
   modalIsDisplay: string;
+  emojiLabel: string;
+  emojiSymbol: string;
 }
 
 const AlertBox: React.FC<AlertBoxProps> = ({
   onCloseClick,
   onNoReminderClick,
-  modalIsDisplay
+  modalIsDisplay,
+  emojiLabel,
+  emojiSymbol
 
 }): JSX.Element => {
 
@@ -106,7 +110,12 @@ const AlertBox: React.FC<AlertBoxProps> = ({
             Q 15 6 15 6z" />
           </svg>
         </TearDropWrapper>
-        <ReminderText>Drink your water! Nourish your body! :) </ReminderText>
+        <ReminderText>
+          Drink your water! <br /> Nourish your body!
+          <span role="img" aria-label={emojiLabel ? emojiLabel : ""}>
+            {emojiSymbol}
+          </span>  
+        </ReminderText>
         <CheckboxWrapper>
          <NoReminderCheckbox type="checkbox" id="no-reminder" name="no-reminder" value="noreminder" onClick={onNoReminderClick} />
          <label htmlFor="no-reminder">Don't reminder me!</label>
