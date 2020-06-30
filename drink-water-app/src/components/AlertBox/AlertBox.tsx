@@ -80,7 +80,6 @@ const NoReminderCheckbox = styled.input`
 export interface AlertBoxProps {
   onCloseClick: () => void;
   onNoReminderClick: () => void;
-  modalIsDisplay: string;
   emojiLabel: string;
   emojiSymbol: string;
 }
@@ -88,14 +87,13 @@ export interface AlertBoxProps {
 const AlertBox: React.FC<AlertBoxProps> = ({
   onCloseClick,
   onNoReminderClick,
-  modalIsDisplay,
   emojiLabel,
   emojiSymbol
 
 }): JSX.Element => {
 
   return (
-    <AlertWrapper style={{display: `${modalIsDisplay}`}}>
+    <AlertWrapper>
       <AlertMessageCont>
         <HeaderWrapper>
           <ReminderHeader>Reminder</ReminderHeader>

@@ -43,7 +43,7 @@ interface AppProps {}
 
 export const App: React.FC<AppProps> = (props): JSX.Element => {
   const [totalAmount, setTotalAmount] = React.useState(0);
-  const [modalIsDisplay, setModalIsDisplay] = React.useState("none");
+  const [modalIsDisplay, setModalIsDisplay] = React.useState(false);
   const [isNoReminderSet, setIsNoReminderSet] = React.useState(false);
 
   const handlePercentage = () => {
@@ -53,23 +53,20 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
   };
 
   const onNoReminderChecked = () => {
-    console.log("checked");
     setIsNoReminderSet(true);
-    console.log("reminder from checkbox", isNoReminderSet);
   }
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setModalIsDisplay("flex");
+      setModalIsDisplay(true);
       // }, 60*60*1000);
     }, 5000);
-    if(isNoReminderSet) return () => clearInterval(interval);
-    console.log("reminder set", isNoReminderSet);
+    if(isNoReminderSet) {clearInterval(interval)};
     return () => clearInterval(interval);
   }, [modalIsDisplay, isNoReminderSet]);
 
   const onCloseClick = () => {
-    setModalIsDisplay("none");
+    setModalIsDisplay(false);
   }
 
   
@@ -90,12 +87,11 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
         <ProgressBar percentage={handlePercentage()} />
         <WaterAmount setTotalAmount={setTotalAmount} />
       </WaterWrapper>
-      <AlertBox 
-        modalIsDisplay={modalIsDisplay} 
+      {modalIsDisplay && <AlertBox 
         onCloseClick={onCloseClick} 
         onNoReminderClick={onNoReminderChecked}
         emojiLabel={"Smile"}
-        emojiSymbol={'😀'} />
+        emojiSymbol={'😀'} />}
     </React.Fragment>
   );
 };
