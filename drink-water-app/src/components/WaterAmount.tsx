@@ -85,7 +85,7 @@ const WaterAmount: React.FC<WaterAmountProps> = ({
           <Label id="amount">Insert your amount you had today.</Label>
         </Cont>
         <Cont>
-          <Input type="number" name="amount" id="amountValue" value={enteredAmount} onChange={handleChange} />
+          <Input type="number" name="amount" id="amountValue" value={enteredAmount} onChange={handleChange} data-testid="amount-value" />
           <OzText>oz</OzText>
         </Cont>
         <ButtonWrapper>
