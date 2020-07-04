@@ -85,7 +85,4 @@ describe('renders Drink Your Watere app', () => {
     expect(onCloseClick).toHaveBeenCalledTimes(1)
     //is this enough?
   });
-
-
-
 });

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@xstyled/styled-components";
 import { th } from "@xstyled/system";
+import { isMobileOnly } from "react-device-detect";
 import TotalAmount from "./components/TotalAmount";
 import WaterAmount from "./components/WaterAmount";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
@@ -18,7 +19,7 @@ const HeaderCont = styled.div`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #f9f7eb;
-  padding-bottom: ${th.space(5)};
+  padding: 1em;
 `;
 
 const Heading = styled.h1`
@@ -37,6 +38,10 @@ const WaterWrapper = styled.div`
   border-radius: 0.5em;
   border: solid 1px #a7cdeb;
   width: 40%;
+`;
+
+const WaterWrapperMobile = styled(WaterWrapper)`
+  width: 80%;
 `;
 
 interface AppProps {}
@@ -81,11 +86,18 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
           <p> Enter your amount when you drink water. </p>
         </HeaderCont>
       </HeaderWrapper>
-      <WaterWrapper>
+      {!isMobileOnly && (<WaterWrapper>
         <TotalAmount totalAmount={totalAmount} />
         <ProgressBar percentage={handlePercentage()} />
         <WaterAmount setTotalAmount={setTotalAmount} />
-      </WaterWrapper>
+      </WaterWrapper>)}
+      {isMobileOnly && (
+        <WaterWrapperMobile>
+          <TotalAmount totalAmount={totalAmount} />
+          <ProgressBar percentage={handlePercentage()} />
+          <WaterAmount setTotalAmount={setTotalAmount} />
+        </WaterWrapperMobile>
+      )}
       {modalIsDisplay && <AlertBox 
         onCloseClick={onCloseClick} 
         onNoReminderClick={onNoReminderChecked}

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@xstyled/styled-components';
+import { isMobileOnly } from "react-device-detect";
 
 
 const Wrapper = styled.div`
@@ -23,7 +24,6 @@ const Input = styled.input`
   margin: 0.25em 0;
   box-sizing: border-box;
 `;
-
 const OzText = styled.span`
   text-align: left;
   font-size: 1em;
@@ -33,6 +33,10 @@ const OzText = styled.span`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const ButtonWrapperMobile = styled.div`
+  width: 100%;
 `;
 
 const ButtonStyle = styled.input`
@@ -53,6 +57,12 @@ const ResetButton = styled(ButtonStyle)`
   color: #666;
 `;
 
+const SubmitButtonMobile = styled(SubmitButton)`
+  width: 100%;
+`;
+const ResetButtonMobile = styled(ResetButton)`
+  width: 100%;
+`;
 const Cont = styled.div`
   display: block;
   margin: 1em 0.5em;
@@ -88,17 +98,33 @@ const WaterAmount: React.FC<WaterAmountProps> = ({
           <Input type="number" name="amount" id="amountValue" aria-label="water-amount" value={enteredAmount} onChange={handleChange} data-testid="amount-value" />
           <OzText>oz</OzText>
         </Cont>
-        <ButtonWrapper>
-          <Cont>
-            <SubmitButton
-              type="submit"
-              value="Submit"
-            />
-          </Cont>
-          <Cont>
-            <ResetButton type="reset" value="Reset" data-testid="reset-button" />
-          </Cont>
+        {!isMobileOnly && (
+          <ButtonWrapper>
+            <Cont>
+              <SubmitButton
+                type="submit"
+                value="Submit"
+              />
+            </Cont>
+            <Cont>
+              <ResetButton type="reset" value="Reset" data-testid="reset-button" />
+            </Cont>
         </ButtonWrapper>
+        )}
+        {isMobileOnly && (
+          <ButtonWrapperMobile>
+            <Cont>
+              <SubmitButtonMobile
+                type="submit"
+                value="Submit"
+              />
+            </Cont>
+            <Cont>
+              <ResetButtonMobile type="reset" value="Reset" data-testid="reset-button" />
+            </Cont>
+        </ButtonWrapperMobile>
+        )}
+        
         <Cont>You entered {enteredAmount} oz.</Cont>
       </FormCont>
     </Wrapper>
