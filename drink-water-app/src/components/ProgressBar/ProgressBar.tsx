@@ -23,7 +23,7 @@ const GoalCont = styled.div`
   text-align: center;
   font-size: 0.8em;
   font-weight: 600;
-  background-color: #e89613;
+  background-color: #A3005A;
   color: #fff;
   box-sizing: border-box;
 `;
@@ -32,7 +32,7 @@ const Triangle = styled.div`
   height: 0; 
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid #e89613;
+  border-bottom: 5px solid #A3005A;
   margin: auto;
 `;
 

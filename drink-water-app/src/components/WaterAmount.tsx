@@ -37,6 +37,7 @@ const ButtonWrapper = styled.div`
 
 const ButtonWrapperMobile = styled.div`
   width: 100%;
+  padding-top: 0.4em;
 `;
 
 const ButtonStyle = styled.input`
@@ -48,13 +49,13 @@ const ButtonStyle = styled.input`
 `;
 
 const SubmitButton = styled(ButtonStyle)`
-  background-color: #21addb;
+  background-color: #413CE0;
   color: #fff;
 `;
 
 const ResetButton = styled(ButtonStyle)`
-  background-color: #e0e0e0;
-  color: #666;
+  background-color: #F0F0F0;
+  color: #4F4F4F;
 `;
 
 const SubmitButtonMobile = styled(SubmitButton)`

@@ -22,7 +22,6 @@ export interface TotalAmountProps {
   totalAmount: number;
 }
 
-
 const TotalAmount: React.FC<TotalAmountProps> = ({
   totalAmount
 }: TotalAmountProps): JSX.Element => {
