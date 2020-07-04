@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { render, act, fireEvent } from '@testing-library/react';
+import { render, act, fireEvent, getByTestId } from '@testing-library/react';
 import App from './App';
 import WaterAmount from "./components/WaterAmount";
 import TotalAmount from './components/TotalAmount';
+import AlertBox from './components/AlertBox/AlertBox';
 
 describe('renders Drink Your Watere app', () => {
 
@@ -28,16 +29,63 @@ describe('renders Drink Your Watere app', () => {
   // Water Amount
   it('renders the amount the user entered and updates when the Submit button triggers the change event', () => {
     const setTotalAmount = jest.fn();
-    const { getByText, getByTestId } = render(<WaterAmount setTotalAmount={setTotalAmount} />);
-    const submitButton = getByText("Submit");
-    const enteredValue = getByTestId("amount-value");
-
-    
+    const setup = () => {
+      const utils = render(<WaterAmount setTotalAmount={setTotalAmount} />)
+      const input = utils.getByLabelText('water-amount') as HTMLInputElement;
+      return {
+        input,
+        ...utils,
+      }
+    }
+    const { input, getByTestId } = setup();    
+    const resetButton = getByTestId("reset-button");
+    act(() => { 
+      fireEvent.change(input, { target: { value: '0' } });
+    })
+    expect(input.value).toBe("0");
+    act(() => { 
+      fireEvent.change(input, { target: { value: '23' } });
+    })
+    expect(input.value).toBe("23");
     act(() => {
-      fireEvent.change(submitButton, { target: { value: '20'}});
-    });
-    expect(setTotalAmount).toBe('20');
+      fireEvent.click(resetButton);
+      fireEvent.change(input, { target: { value: '0' } });
+    })
+    expect(input.value).toBe("0");
+  });
+  jest.useFakeTimers();
 
-  })
+  it('renders the Drink Water Reminder AlertBox every hour', () => {
+    const onCloseClick = jest.fn();
+    const onNoReminderClick = jest.fn();
+    const { container } = render(<AlertBox onCloseClick={onCloseClick} onNoReminderClick={onNoReminderClick} emojiLabel="Smile" emojiSymbol={"😀"} />); 
+
+    // do I need to test for modalIsDisplay true?
+ 
+    expect(container.textContent).toBe("ReminderxDrink your water!  Nourish your body!😀Don't reminder me!");
+    expect(setInterval).toHaveBeenCalledTimes(1);
+    expect(setInterval).toHaveBeenLastCalledWith(expect.any(Function), 60*60*1000);
+  });
+
+  it('triggers the checkbox when it is clicked', () => {
+    const onCloseClick = jest.fn();
+    const onNoReminderClick = jest.fn();
+    const { getByTestId } = render(<AlertBox onCloseClick={onCloseClick} onNoReminderClick={onNoReminderClick} emojiLabel="Smile" emojiSymbol={"😀"} />); 
+    const checkbox = getByTestId("noreminder-checkbox") as HTMLInputElement;
+    const closeButton = getByTestId("close-button");
+
+    expect(checkbox.checked).toEqual(false);
+    act(() => {
+      fireEvent.click(checkbox)
+    })
+    expect(checkbox.checked).toEqual(true);
+    act(() => {
+      fireEvent.click(closeButton)
+    })
+    expect(onCloseClick).toHaveBeenCalledTimes(1)
+    //is this enough?
+  });
+
+
 
 });

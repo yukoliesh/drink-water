@@ -59,8 +59,7 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       setModalIsDisplay(true);
-      // }, 60*60*1000);
-    }, 5000);
+    }, 60*60*1000);
     if(isNoReminderSet) {clearInterval(interval)};
     return () => clearInterval(interval);
   }, [modalIsDisplay, isNoReminderSet]);

@@ -3,6 +3,7 @@ import styled from '@xstyled/styled-components';
 
 
 const AlertWrapper = styled.div`
+  display: flex;
   justify-content: center;
   background-color: #0006;
   z-index: 1;
@@ -115,10 +116,10 @@ const AlertBox: React.FC<AlertBoxProps> = ({
           </span>  
         </ReminderText>
         <CheckboxWrapper>
-         <NoReminderCheckbox type="checkbox" id="no-reminder" name="no-reminder" value="noreminder" onClick={onNoReminderClick} />
+         <NoReminderCheckbox type="checkbox" id="no-reminder" data-testid="noreminder-checkbox" name="no-reminder" value="noreminder" onClick={onNoReminderClick} />
          <label htmlFor="no-reminder">Don't reminder me!</label>
         </CheckboxWrapper>
-        <CloseButton type="button" value="Close" id="close" onClick={onCloseClick} />
+        <CloseButton type="button" value="Close" id="close" data-testid="close-button" onClick={onCloseClick} />
       </AlertMessageCont>
     </AlertWrapper>
   )
