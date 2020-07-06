@@ -1,13 +1,6 @@
 import React from 'react';
-import styled from '@xstyled/styled-components';
+import { FillerItem } from "../../stylesheet/stylesheet";
 
-const FillerItem = styled.div`
-  background-color: #21addb;
-  height: 100%;
-  border-radius: inherit;
-  transition: width .5s ease-in;
-  max-width: 100%;
-`;
 
 const Filler = (props) => {
   
