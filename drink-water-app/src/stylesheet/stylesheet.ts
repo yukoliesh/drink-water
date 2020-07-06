@@ -8,7 +8,20 @@ const displayflex = css`
   justify-content: center;
 `;
 
-const fullwidth = "100%"
+const fullwidth = "100%";
+const mediumWidth ="40%";
+const largeWidth = "80%";
+const bold = "600";
+const darkGrey = "#282c34";
+const mediumGrey70 ="rgba(0, 0, 0, 0.7)"
+const mediumGrey20 ="rgba(0, 0, 0, 0.2)"
+const lightGrey = "#e0e0e0";
+const white = "#f3f4f6";
+const waterBlue = "#2a9cde";
+const waterBlue80 = "rgba(42, 156, 222, 0.8)";
+const lightBlue30 = "rgba(110, 181, 232, 0.3)"
+const submitBlue = "#413CE0";
+const goalRed = "#A3005A";
 
 // App component
 export const HeaderWrapper = styled.div`
@@ -16,17 +29,17 @@ export const HeaderWrapper = styled.div`
 `;
 export const HeaderCont = styled.div`
   ${displayflex}
-  background-color: #282c34;
+  background-color: ${darkGrey};
   min-height: 40vh;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
-  color: #f9f7eb;
+  color: ${white};
   padding: ${th.space(4)};
 `;
 
 export const Heading = styled.h1`
   font-size: ${th.fontSize(68)};
-  color: #6eb5e8;
+  color: ${waterBlue80};
 `;
 export const SubHeading = styled.h2`
   font-size: ${th.fontSize(40)};
@@ -38,12 +51,12 @@ export const WaterWrapper = styled.div`
   padding: ${th.space(4)};
   margin: ${th.space(4)} ${th.space('auto')};
   border-radius: ${th.radius(8)};
-  border: solid 1px #a7cdeb;
-  width: 40%;
+  border: solid 1px ${waterBlue};
+  width: ${mediumWidth};
 `;
 
 export const WaterWrapperMobile = styled(WaterWrapper)`
-  width: 80%;
+  width: ${largeWidth};
 `;
 
 // Water Amount
@@ -59,14 +72,15 @@ export const FormCont = styled.form`
 export const Label = styled.label`
   display: block;
   font-size: ${th.fontSize(24)};
-  font-weight: 600;
+  font-weight: ${bold};
 `;
 
 export const Input = styled.input`
-  width: 40%;
-  padding: 1em 1.5em;
-  margin: 0.25em 0;
+  width: ${mediumWidth};
+  padding: ${th.space(3)};
+  margin: ${th.space(4)} 0 0;
   box-sizing: border-box;
+  font-size: ${th.fontSize(16)};
 `;
 export const OzText = styled.span`
   text-align: left;
@@ -86,19 +100,19 @@ export const ButtonWrapperMobile = styled.div`
 export const ButtonStyle = styled.input`
   padding: ${th.space(3)} ${th.space(5)};
   font-size: ${th.fontSize(16)};
-  font-weight: 600;
-  border: solid 1px #fff;
+  font-weight: ${bold};
+  border: solid 1px ${white};
   border-radius: ${th.radius(4)};
 `;
 
 export const SubmitButton = styled(ButtonStyle)`
-  background-color: #413CE0;
-  color: #fff;
+  background-color: ${submitBlue};
+  color: ${white};
 `;
 
 export const ResetButton = styled(ButtonStyle)`
-  background-color: #F0F0F0;
-  color: #4F4F4F;
+  background-color: ${lightGrey};
+  color: ${mediumGrey70};
 `;
 
 export const SubmitButtonMobile = styled(SubmitButton)`
@@ -116,12 +130,12 @@ export const Cont = styled.div`
 export const TotalAmountWrapper = styled.div`
   text-align: center;
   padding: ${th.space(5)};
-  background-color: #d6edff;
+  background-color: ${lightBlue30};
   border-radius: ${th.radius(4)};
 `;
 export const AmountText = styled.span`
   font-size: ${th.fontSize(72)};
-  font-weight: 600;
+  font-weight: ${bold};
 `;
 export const TotalOzText = styled.span`
   text-align: left;
@@ -135,7 +149,7 @@ export const ProgressBarCont = styled.div`
   height: 15px;
   width: ${fullwidth};
   border-radius: ${th.radius(4)};
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${lightGrey};
   margin-top: ${th.space(2)};
 `;
 export const GoalWrapper = styled.div`
@@ -145,14 +159,14 @@ export const GoalWrapper = styled.div`
   float: right;
 `;
 export const GoalCont = styled.div`
-  border-radius: ${th.radius(4)};
+  border-radius: ${th.radius(4)}; // 4px
   padding: ${th.space(2)};
   width: ${fullwidth};
   text-align: center;
   font-size: ${th.fontSize(13)};
-  font-weight: 600;
-  background-color: #A3005A;
-  color: #fff;
+  font-weight: ${bold};
+  background-color: ${goalRed};
+  color: ${white};
   box-sizing: border-box;
 `;
 export const Triangle = styled.div`
@@ -166,7 +180,7 @@ export const Triangle = styled.div`
 
 // Filler
 export const FillerItem = styled.div`
-  background-color: #21addb;
+  background-color: ${waterBlue};
   height: ${fullwidth};
   border-radius: inherit;
   transition: width .5s ease-in;
@@ -192,25 +206,35 @@ export const AlertMessageCont = styled.div`
   align-self: center;
   width: 30%;
   height: 35%;
-  background-color: #fff;
-  border-radius: 0.5em;
-  padding: 2em;
-  box-shadow: 3px 3px 3px 6px #959595;
-  border: solid 1px #959595;
+  background-color: ${white};
+  border-radius: ${th.radius(8)};
+  padding: ${th.space(4)};
+  box-shadow: 3px 3px 3px 3px ${mediumGrey20};
+  border: solid 1px ${mediumGrey20};
+`;
+export const AlertMessageContMobile = styled.div`
+  width: 70%;
+  z-index: 2;
+  align-self: center;
+  background-color: ${white};
+  border-radius: ${th.radius(8)};
+  padding: ${th.space(4)};
+  box-shadow: 3px 3px 3px 3px ${mediumGrey20};
+  border: solid 1px ${mediumGrey20};
 `;
 export const AlertHeaderWrapper = styled.header`
   ${displayflex}  
   flex-wrap: nowrap;
   justify-content: space-between;
-  height: 20%;
+  padding-bottom: ${th.space(2)};
 `;
 export const ReminderHeader = styled.span`
-  font-size: 1.5em;
-  width: 80%;
+  font-size: ${th.fontSize(24)};
+  width: ${largeWidth};
 `;
 export const CloseIconButton = styled.a`
-  font-size: 1.5em;
-  color: #959595;
+  font-size: ${th.fontSize(24)};
+  color: ${mediumGrey70};
   display: inherit;
   cursor: pointer;
   text-decoration: none;
@@ -219,30 +243,30 @@ export const CloseIconButton = styled.a`
 export const CloseButton = styled.input`
   display: inherit;
   padding: 0.8em 3em;
-  font-size: 1em;
-  font-weight: 600;
-  border: solid 1px #fff;
-  border-radius: 0.25em;
-  background-color: #e0e0e0;
-  color: #666;
-  margin: auto;
+  font-size: ${th.fontSize(16)};
+  font-weight: ${bold};
+  border: solid 1px ${white};
+  border-radius: ${th.radius(4)};
+  background-color: ${lightGrey};
+  color: ${mediumGrey70};
+  margin: ${th.space('auto')};
 `;
 export const ReminderText = styled.div`
-  font-size: 1.1em;
+  font-size: ${th.fontSize(18)};
   text-align: center;
-  margin: 1em 0;
+  margin: ${th.space(4)} 0;
 `;
 export const TearDropWrapper = styled.div`
   display: inherit;
   width: 3em;
-  margin: auto;
+  margin: ${th.space('auto')};
 `;
 export const CheckboxWrapper = styled.div`
   ${displayflex}
-  margin: 1.5em auto;
+  margin: ${th.space(4)} ${th.space('auto')};
 `;
 export const NoReminderCheckbox = styled.input`
-  width: 1.5em;
-  height: 1.5em;
-  margin-right: 0.5em;
+  width: ${th.space(4)};
+  height: ${th.space(4)};
+  margin-right: ${th.space(1)};
 `;
