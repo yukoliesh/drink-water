@@ -1,6 +1,6 @@
 import React from 'react';
 import { isMobileOnly } from "react-device-detect";
-import { Wrapper, FormCont, Label, Input, OzText, ButtonWrapper, ButtonWrapperMobile, ButtonStyle, SubmitButton, ResetButton, SubmitButtonMobile, ResetButtonMobile, Cont} from "../stylesheet/stylesheet";
+import { Wrapper, FormCont, Label, Input, OzText, ButtonWrapper, ButtonWrapperMobile, SubmitButton, ResetButton, SubmitButtonMobile, ResetButtonMobile, Cont} from "../stylesheet/stylesheet";
 
 export interface WaterAmountProps {
   setTotalAmount: (e) => void;

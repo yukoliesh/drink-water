@@ -29,6 +29,7 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
     const interval = setInterval(() => {
       setModalIsDisplay(true);
     }, 60*60*1000);
+    // }, 5000);
     if(isNoReminderSet) {clearInterval(interval)};
     return () => clearInterval(interval);
   }, [modalIsDisplay, isNoReminderSet]);
@@ -36,9 +37,6 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
   const onCloseClick = () => {
     setModalIsDisplay(false);
   }
-
-  
-
   return (
     <React.Fragment>
       <HeaderWrapper>
