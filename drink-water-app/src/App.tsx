@@ -1,48 +1,12 @@
 import React from "react";
-import styled from "@xstyled/styled-components";
-import { th } from "@xstyled/system";
 import { isMobileOnly } from "react-device-detect";
 import TotalAmount from "./components/TotalAmount";
 import WaterAmount from "./components/WaterAmount";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
 import AlertBox from "./components/AlertBox/AlertBox";
+import { HeaderWrapper, HeaderCont, Heading, SubHeading, WaterWrapper, WaterWrapperMobile } from "./stylesheet/stylesheet";
 
-const HeaderWrapper = styled.div`
-  text-align: center;
-`;
-const HeaderCont = styled.div`
-  background-color: #282c34;
-  min-height: 40vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: #f9f7eb;
-  padding: 1em;
-`;
 
-const Heading = styled.h1`
-  font-size: ${th.fontSize(68)};
-  color: #6eb5e8;
-`;
-const SubHeading = styled.h2`
-  font-size: ${th.fontSize(40)};
-  margin: 0;
-`;
-
-const WaterWrapper = styled.div`
-  align-items: center;
-  padding: 1em;
-  margin: 2em auto;
-  border-radius: 0.5em;
-  border: solid 1px #a7cdeb;
-  width: 40%;
-`;
-
-const WaterWrapperMobile = styled(WaterWrapper)`
-  width: 80%;
-`;
 
 interface AppProps {}
 

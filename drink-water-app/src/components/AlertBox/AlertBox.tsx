@@ -1,82 +1,6 @@
 import React from 'react';
-import styled from '@xstyled/styled-components';
+import { AlertWrapper, AlertMessageCont, AlertHeaderWrapper, ReminderHeader, CloseIconButton, CloseButton, ReminderText, TearDropWrapper, CheckboxWrapper, NoReminderCheckbox } from "../../stylesheet/stylesheet";
 
-
-const AlertWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  background-color: #0006;
-  z-index: 1;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  overflow: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-`;
-
-const AlertMessageCont = styled.div`
-  z-index: 2;
-  align-self: center;
-  width: 30%;
-  height: 35%;
-  background-color: #fff;
-  border-radius: 0.5em;
-  padding: 2em;
-  box-shadow: 3px 3px 3px 6px #959595;
-  border: solid 1px #959595;
-`;
-const HeaderWrapper = styled.header`
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  height: 20%;
-`;
-const ReminderHeader = styled.span`
-  font-size: 1.5em;
-  width: 80%;
-`;
-const CloseIconButton = styled.a`
-  font-size: 1.5em;
-  color: #959595;
-  display: inherit;
-  cursor: pointer;
-  text-decoration: none;
-
-`;
-const CloseButton = styled.input`
-  display: inherit;
-  padding: 0.8em 3em;
-  font-size: 1em;
-  font-weight: 600;
-  border: solid 1px #fff;
-  border-radius: 0.25em;
-  background-color: #e0e0e0;
-  color: #666;
-  margin: auto;
-`;
-const ReminderText = styled.div`
-  font-size: 1.1em;
-  text-align: center;
-  margin: 1em 0;
-`;
-const TearDropWrapper = styled.div`
-  display: inherit;
-  width: 3em;
-  margin: auto;
-`;
-const CheckboxWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1.5em auto;
-`;
-const NoReminderCheckbox = styled.input`
-  width: 1.5em;
-  height: 1.5em;
-  margin-right: 0.5em;
-`;
 
 export interface AlertBoxProps {
   onCloseClick: () => void;
@@ -96,10 +20,10 @@ const AlertBox: React.FC<AlertBoxProps> = ({
   return (
     <AlertWrapper>
       <AlertMessageCont>
-        <HeaderWrapper>
+        <AlertHeaderWrapper>
           <ReminderHeader>Reminder</ReminderHeader>
           <CloseIconButton href="#" onClick={onCloseClick}>x</CloseIconButton> 
-        </HeaderWrapper>
+        </AlertHeaderWrapper>
         <TearDropWrapper>
           <svg width="100%" viewBox="0 0 30 42">
             <path fill="#a2dafa" stroke="#2a9cde" strokeWidth="1.5" 
