@@ -4,7 +4,7 @@ import { AlertWrapper, AlertMessageCont, AlertHeaderWrapper, ReminderHeader, Clo
 
 
 export interface AlertBoxProps {
-  onCloseClick: () => void;
+  onCloseClick: (e) => void;
   onNoReminderClick: () => void;
   emojiLabel: string;
   emojiSymbol: string;
@@ -19,7 +19,7 @@ const AlertBox: React.FC<AlertBoxProps> = ({
 }): JSX.Element => {
 
   return (
-    <AlertWrapper>
+    <AlertWrapper id="dialog">
       {!isMobileOnly &&( 
         <AlertMessageCont>
           <AlertHeaderWrapper>

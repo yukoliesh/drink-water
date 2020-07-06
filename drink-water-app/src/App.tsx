@@ -41,11 +41,11 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
     <React.Fragment>
       <HeaderWrapper>
         <HeaderCont>
-          <Heading> Drink Your Water </Heading>
-          <SubHeading>
+          <Heading aria-label="Drink Your Water"> Drink Your Water </Heading>
+          <SubHeading aria-label="Stay hydrated. Drink 8 8-ounce glasses a day.">
             Stay hydrated. Drink 8 8-ounce glasses a day.
           </SubHeading>
-          <p> Enter your amount when you drink water. </p>
+          <p aria-label="Enter your amount when you drink water."> Enter your amount when you drink water. </p>
         </HeaderCont>
       </HeaderWrapper>
       {!isMobileOnly && (<WaterWrapper>
@@ -61,7 +61,7 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
         </WaterWrapperMobile>
       )}
       {modalIsDisplay && <AlertBox 
-        onCloseClick={onCloseClick} 
+        onCloseClick={onCloseClick}   
         onNoReminderClick={onNoReminderChecked}
         emojiLabel={"Smile"}
         emojiSymbol={'😀'} />}
