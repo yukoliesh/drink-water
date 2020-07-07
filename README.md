@@ -1,3 +1,5 @@
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 # Drink Water App
 
 This app lets you add the amount of water you drink today. It will reminds you every hour to drink water. 

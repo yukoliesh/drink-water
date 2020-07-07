@@ -39,18 +39,14 @@ describe('renders Drink Your Watere app', () => {
     }
     const { input, getByTestId } = setup();    
     const resetButton = getByTestId("reset-button");
-    act(() => { 
-      fireEvent.change(input, { target: { value: '0' } });
-    })
+    // Initial value
     expect(input.value).toBe("0");
-    act(() => { 
-      fireEvent.change(input, { target: { value: '23' } });
-    })
+    fireEvent.change(input, { target: { value: '23' } });
+
     expect(input.value).toBe("23");
-    act(() => {
-      fireEvent.click(resetButton);
-      fireEvent.change(input, { target: { value: '0' } });
-    })
+
+    fireEvent.click(resetButton);
+
     expect(input.value).toBe("0");
   });
   jest.useFakeTimers();

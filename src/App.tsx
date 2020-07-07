@@ -5,6 +5,7 @@ import WaterAmount from "./components/WaterAmount";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
 import AlertBox from "./components/AlertBox/AlertBox";
 import { HeaderWrapper, HeaderCont, Heading, SubHeading, WaterWrapper, WaterWrapperMobile } from "./stylesheet/stylesheet";
+import { useToggle } from "./hooks/use-toggle";
 
 
 
@@ -12,7 +13,8 @@ interface AppProps {}
 
 export const App: React.FC<AppProps> = (props): JSX.Element => {
   const [totalAmount, setTotalAmount] = React.useState(0);
-  const [modalIsDisplay, setModalIsDisplay] = React.useState(false);
+  const [, intervalOn, intervalOff, modalIsDisplay] = useToggle();
+  // const [modalIsDisplay, setModalIsDisplay] = React.useState(false);
   const [isNoReminderSet, setIsNoReminderSet] = React.useState(false);
 
   const handlePercentage = () => {
@@ -27,15 +29,15 @@ export const App: React.FC<AppProps> = (props): JSX.Element => {
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setModalIsDisplay(true);
+      intervalOn();
     }, 60*60*1000);
     // }, 5000);
     if(isNoReminderSet) {clearInterval(interval)};
     return () => clearInterval(interval);
-  }, [modalIsDisplay, isNoReminderSet]);
+  }, [intervalOn, isNoReminderSet]);
 
   const onCloseClick = () => {
-    setModalIsDisplay(false);
+    intervalOff();
   }
   return (
     <React.Fragment>
