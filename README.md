@@ -5,7 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This app lets you add the amount of water you drink today. It will reminds you every hour to drink water. 
 This is Mobile friendly, Accessbility friendly. 
 
-More Accessibility Enhancement is coming soon.
+**Screen shot*
+![Screen shot of Drink Water app](https://github.com/yukoliesh/drink-water/blob/master/drink-water.jpg?raw=true)
 
 ## Main Frameworks I used 
 * React
